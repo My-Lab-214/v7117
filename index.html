@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" style="scrollbar-width: none;"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe Editable Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+      min-height: 100vh;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    nav h2 {
+      margin: 0;
+      font-weight: 600;
+    }
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    nav ul li a:hover {
+      border-bottom: 2px solid #333;
+    }
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+      background: white;
+    }
+    header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 16px;
+      color: #777;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+    .search-box {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .search-box input {
+      padding: 10px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+    }
+    .search-box button {
+      padding: 10px 20px;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px 40px 60px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .card {
+      background-color: #eee;
+      border-radius: 10px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      color: #1f1f1f;
+      padding: 20px;
+    }
+    .card h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .card p {
+      margin: 4px 0 0;
+      font-size: 12px;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #aaa;
+      background: white;
+    }
+    #controls {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 15px;
+  z-index: 1000;
+  display: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  max-width: 260px;
+  line-height: 1.6;
+}
+#controls label {
+  display: block;
+  margin-bottom: 8px;
+}
+#controls input[type="text"],
+#controls input[type="color"] {
+  width: 100%;
+  padding: 5px;
+  margin-top: 2px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+#controls button {
+  width: 100%;
+  background: #000;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+    #deployBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #000;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    .selected {
+      outline: 2px dashed red;
+    }
+
+    body.dark-mode {
+  background: #121212;
+  color: #e0e0e0;
+}
+body.dark-mode nav,
+body.dark-mode header,
+body.dark-mode footer {
+  background: #1f1f1f;
+}
+body.dark-mode nav ul li a {
+  color: #e0e0e0;
+}
+body.dark-mode .card {
+  background-color: #2a2a2a;
+}
+body.dark-mode #controls {
+  background: #1f1f1f;
+  color: #eee;
+}
+body.dark-mode input,
+body.dark-mode button {
+  background: #333;
+  color: #eee;
+}
+
+#controls-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 0 5px;
+}
+
+#controls-header .label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+#closeControls {
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+#closeControls:hover {
+  color: red;
+  transform: scale(1.1);
+}
+</style>
+</head>
+<body class="">
+
+<nav>
+  <h2>ACME</h2>
+  <ul>
+    <li><a href="#product">PRODUCT</a></li>
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#portfolio">PORTFOLIO</a></li>
+    <li><a href="#team">TEAM</a></li>
+    <li><a href="#contact">CONTACT</a></li>
+  </ul>
+
+</nav>
+
+<header class="">
+  <h1 class="">Purandar</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <div class="search-box">
+    <input type="text" placeholder="Search...">
+    <button>SEARCH</button>
+  </div>
+</header>
+
+<h1 style="display: flex; justify-content: center;">Lorem ipsum dolor</h1>
+<div class="grid">
+  <div class="card">
+    <h3>Lorem Ipsum</h3>
+    <p>LOREM IPSUM</p>
+  </div>
+  <div class="card">
+    <h3>Lorem Ipsum</h3>
+    <p>LOREM IPSUM</p>
+  </div>
+  <div class="card">
+    <h3>Lorem Ipsum</h3>
+    <p>LOREM IPSUM</p>
+  </div>
+  <div class="card">
+    <h3>Lorem Ipsum</h3>
+    <p>LOREM IPSUM</p>
+  </div>
+  <div class="card">
+    <h3>Lorem Ipsum</h3>
+    <p>LOREM IPSUM</p>
+  </div>
+  <div class="card">
+    <h3>Lorem Ipsum</h3>
+    <p>LOREM IPSUM</p>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 ACME Inc. | All rights reserved.</p>
+</footer>
+
+
+
+
+
+
+
+
+<!-- Code injected by live-server -->
+
+
+</body></html>
